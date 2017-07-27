@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+Show <input type="radio" name="checked" id="checked" value="checked">
+Dont Show <input type="radio" name="checked" id="checked" value="nchecked">
+<input type="submit" name="submit" id="submit">
+<div id="demo">
+    latitude : <span id="lat"></span>
+     longitude : <span id="long"></span>
+    
+</div>
+<script type="text/javascript">
+    var ck = document.getElementById('checked');
+    var submit = document.getElementById('submit');
+
+    if(ck.value == 'checked'){
+         submit.onclick = function(){
+                init();
+            }
+            function init(){
+                navigator.geolocation.getCurrentPosition(positionSuccess, positionError);
+            }
+            function positionSuccess(position){
+                var lat = position.coords.latitude;
+                var long = position.coords.longitude;
+
+                document.getElementById('lat').innerHTML = lat;
+                document.getElementById('long').innerHTML = long;
+            }
+            function positionError(message){
+                alert(message.error);
+            }
+    } 
+    else{
+        alert('error');
+    }
+</script>
+</body>
+</html>
+
+ 
+
+ 
+ 
+ 
